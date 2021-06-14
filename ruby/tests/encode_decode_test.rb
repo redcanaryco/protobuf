@@ -101,4 +101,13 @@ class EncodeDecodeTest < Test::Unit::TestCase
     assert_match json, "{\"CustomJsonName\":42}"
   end
 
+  def test_encode_decode_bytes
+    m = A::B::C::TestMessage.new(
+      :optional_bytes => (0..255).to_a.pack("C*"),
+    )
+    from = A::B::C::TestMessage.encode(m)
+    m2 = A::B::C::TestMessage.decode(from)
+    assert_equal m.optional_bytes.bytes, m2.optional_bytes.bytes
+  end
+
 end
