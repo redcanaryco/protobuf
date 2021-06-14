@@ -202,7 +202,7 @@ public class Utils {
             case BOOL:
                 return (Boolean) value ? runtime.getTrue() : runtime.getFalse();
             case BYTES: {
-                IRubyObject wrapped = RubyString.newString(runtime, ((ByteString) value).toStringUtf8(), ASCIIEncoding.INSTANCE);
+                IRubyObject wrapped = RubyString.newString(runtime, ((ByteString) value).toByteArray(), 0, ((ByteString) value).size(), ASCIIEncoding.INSTANCE);
                 wrapped.setFrozen(true);
                 return wrapped;
             }
