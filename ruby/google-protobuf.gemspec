@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "google-protobuf"
-  s.version     = "3.17.3.2"
+  s.version     = "3.17.3.3"
   git_tag       = "v#{s.version.to_s.sub('.rc.', '-rc')}" # Converts X.Y.Z.rc.N to vX.Y.Z-rcN, used for the git tag
   s.licenses    = ["BSD-3-Clause"]
   s.summary     = "Protocol Buffers"
@@ -14,14 +14,14 @@ Gem::Specification.new do |s|
   }
   s.require_paths = ["lib"]
   s.files       = Dir.glob('lib/**/*.rb')
-  if RUBY_PLATFORM == "java"
-    s.platform  = "java"
+  #if RUBY_PLATFORM == "java"
+  #  s.platform  = "java"
     s.files     += ["lib/google/protobuf_java.jar"]
-  else
-    s.files     += Dir.glob('ext/**/*')
-    s.extensions= ["ext/google/protobuf_c/extconf.rb"]
-    s.add_development_dependency "rake-compiler-dock", ">= 1.1.0", "< 2.0"
-  end
+  #else
+  #  s.files     += Dir.glob('ext/**/*')
+  #  s.extensions= ["ext/google/protobuf_c/extconf.rb"]
+  #  s.add_development_dependency "rake-compiler-dock", ">= 1.1.0", "< 2.0"
+  #end
   s.test_files  = ["tests/basic.rb",
                   "tests/stress.rb",
                   "tests/generated_code_test.rb"]
